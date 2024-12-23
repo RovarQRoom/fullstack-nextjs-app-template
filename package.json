@@ -23,7 +23,9 @@
     "next"
   ],
   "scripts": {
-    "dev": "EXPORT_ENABLED=false NODE_ENV=development node server.js & node backend/server-php.js",
+    "dev": "pnpm run dev:frontend & pnpm run dev:backend",
+    "dev:frontend": "cross-env EXPORT_ENABLED=false NODE_ENV=development node server.js",
+    "dev:backend": "node backend/server-php.js",
     "build": "cross-env SKIP_BUILD_STATIC_GENERATION=true NODE_ENV=production node scripts/download-remote-files-from-API.js & cross-env SKIP_BUILD_STATIC_GENERATION=true EXPORT_ENABLED=false NODE_ENV=production next build",
     "build:static": "cross-env NODE_ENV=production node scripts/download-remote-files-from-API.js & cross-env NODE_ENV=production EXPORT_ENABLED=false next build",
     "start": "EXPORT_ENABLED=false NODE_ENV=production node server.js & node backend/server-php.js",
@@ -47,6 +49,7 @@
     "next-cookies": "^2.0.3",
     "next-redux-wrapper": "^8.1.0",
     "php-express": "0.0.3",
+    "pnpm": "^9.15.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
